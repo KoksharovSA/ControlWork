@@ -39,17 +39,18 @@ CREATE TABLE zoo_residents (
 	name CHARACTER VARYING(20),
 	pet INT,
 	birthday DATETIME,
+	whatSay CHARACTER VARYING(20), 
 	command CHARACTER VARYING(20),
 	FOREIGN KEY (pet) REFERENCES pets(id) ON UPDATE CASCADE
 );
 
-INSERT INTO zoo_residents (name, pet, birthday, command) VALUES 
-('murka', 1, '2020-03-14', 'go home'),
-('sharik', 2, '2019-10-19', 'aport'),
-('pushok',3, '2022-05-16', 'run'),
-('malish', 4, '2022-01-14', 'alga'),
-('krasavchik', 5, '2020-11-13', 'go'),
-('gorbatii', 6, '2021-04-14', 'rest');
+INSERT INTO zoo_residents (name, pet, birthday, whatSay, command) VALUES 
+('murka', 1, '2020-03-14', 'myau', 'go home'),
+('sharik', 2, '2019-10-19', 'gav-gav', 'aport'),
+('pushok',3, '2022-05-16', 'ufuf', 'run'),
+('malish', 4, '2022-01-14', 'igogo', 'alga'),
+('krasavchik', 5, '2020-11-13', 'iaia', 'go'),
+('gorbatii', 6, '2021-04-14', 'eee', 'rest');
 
 DELETE FROM zoo_residents WHERE pet = 6;
 
@@ -61,7 +62,8 @@ SELECT * FROM
 	z.name,
 	ptp.name as kind,
 	ptp.nametp as class,
-	z.birthday, 
+	z.birthday,
+	z.whatSay,
 	z.command,
 	DATEDIFF(NOW(), z.birthday) AS days
 FROM zoo_residents z JOIN 
@@ -69,10 +71,9 @@ FROM zoo_residents z JOIN
 FROM pets p JOIN type_pets tp 
 WHERE p.type_pet = tp.id) AS ptp 
 WHERE z.pet = ptp.id) AS pets 
-WHERE pets.days BETWEEN 365 AND 1095;
+WHERE pets.days BETWEEN 365 AND 730;
 
 SELECT * FROM young_pets;
 
-
-
+SELECT * FROM zoo_residents;
 

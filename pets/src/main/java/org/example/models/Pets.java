@@ -1,6 +1,7 @@
 package org.example.models;
 
 public class Pets implements IAnimals{
+    private int id;
     private String myName;
     private String myCommands;
 
@@ -8,16 +9,26 @@ public class Pets implements IAnimals{
 
     private String whatSay;
     private IClassPet myClass;
+
+    @Override
+    public String toString() {
+        return "\n\n" +
+                "id=" + id + '\n' +
+                "myName=" + myName + '\n' +
+                "myCommands=" + myCommands + '\n' +
+                "myBirthday=" + myBirthday + '\n' +
+                "whatSay=" + whatSay + '\n' +
+                "myClass=" + myClass;
+    }
+
     private ITypes myType;
-    public Pets(String myName, String myCommands, String myBirthday, String whatSay, IClassPet myClass) {
+    public Pets(int id, String myName, String myCommands, String myBirthday, String whatSay, IClassPet myClass) {
+        this.id = id;
         this.myName = myName;
         this.myCommands = myCommands;
         this.myBirthday = myBirthday;
         this.whatSay = whatSay;
         this.myClass = myClass;
-    }
-
-    public Pets() {
     }
 
     @Override
@@ -28,6 +39,11 @@ public class Pets implements IAnimals{
     @Override
     public void say() {
         System.out.println(whatSay);
+    }
+
+    @Override
+    public int getId() {
+        return id;
     }
 
     @Override

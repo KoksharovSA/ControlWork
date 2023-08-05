@@ -6,10 +6,8 @@ public class TypePets implements ITypes{
 
     @Override
     public String toString() {
-        return "TypePets{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                '}';
+        return "id=" + id +
+                ", type='" + type + "\n";
     }
 
     public TypePets(int id, String type) {
